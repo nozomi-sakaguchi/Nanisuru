@@ -1,48 +1,41 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-# <ナニスル？>
+#
+  ナニスル？
 
 ## サイト概要
-  テレビゲームやインターネットを使った遊び以外の遊びを投稿したり、知ってもらうサイト。
 
 ### サイトテーマ
-<テレビゲームやインターネットを使った遊び以外の遊びのレビューサイト>
+室内外、老若男女問わず、だれでも自分の好きな遊び、楽しかった遊びを投稿でき、
+いろいろな遊び、知らなかった遊びを見つけることができるレビューサイト。
 
 ### テーマを選んだ理由
-<子供にゲーム以外の遊びを知ってもらう>
+核家族や共働きが増え祖父母や親、また大人から遊びを教えてもらう機会が減っていると感じています。
+また、インターネット、スマートフォン、テレビゲームが発展しておりそれらがあれば1日を過ごすこともできます。
+いろいろな遊びがあるのに遊びを知る機会が少ないのではないかと考えました。
+こちらのサイトを使用することで、大人からは昔からある遊びを教えてもらい、
+子供たちからは子どもたちの興味のある遊び教えてもらうことができます。
+さらに自分では思いつかなかった思いもよらぬ遊びに出会えるかもしれません。
+遊びによっては大人や子供は関係なくみんなで楽しむことができ、コミュニケーションが増えるのではないかと考えます。
+
+
 
 ### ターゲットユーザ
-<親、子とも>
+    子ども、親、祖父母、保育者、遊びを求めている人
 
 ### 主な利用シーン
-<雨の日や子供にゲーム以外の何か違う遊びを提供したいとき>
+    楽しかった遊びを誰かに伝えたいとき
+    楽しかった遊びをメモしておきたいとき
+    雨の日に室内でできる遊びを知りたいとき
+    休みの日や長期休暇でなにか遊びを探しているとき
+    知らない遊びをみつけたいとき
+    孫との遊びを探しているとき
+
+
 
 ## 設計書
 <...>
+
+実装機能リスト
+https://docs.google.com/spreadsheets/d/1iIPEo06OLZDOK4PDOyCeUwHLnowvk_ugLODRTLTprNw/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -52,8 +45,5 @@ Things you may want to cover:
 - IDE：Cloud9
 
 ## 使用素材
-- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
-- 使用しない場合は、使用素材の項目をREADMEから削除してください。
+  使用検討中です
 
-実装機能リスト
-https://docs.google.com/spreadsheets/d/1iIPEo06OLZDOK4PDOyCeUwHLnowvk_ugLODRTLTprNw/edit?usp=sharing
