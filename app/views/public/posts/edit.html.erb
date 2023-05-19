@@ -1,0 +1,37 @@
+
+
+<h2>編集</h2>
+
+<%= form_with model: @post, url:posts_path(@post.id) do |f| %>
+ <div class="field">
+  <%= f.label :遊びの題名・名前 %>
+  <%= f.text_field :name %>
+</div>
+ <div class="field">
+   <%= f.label :遊び方説明・内容説明 %>
+  <%= f.text_area :introduction %>
+</div>
+
+ <div class="field">
+  <%= f.label :ジャンル %>
+  <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択してください"}) %>
+
+</div>
+
+ <div class="field">
+   <%= f.label :何歳から遊べるか %>
+  <%= f.text_field :age %>
+</div>
+
+ <div class="field">
+   <%= f.label :所要時間 %>
+  １回 約 <%= f.text_field :time %> 分
+</div>
+ <div class="field">
+   <%= f.label :費用 %>
+  約<%= f.text_field :cost %> 円
+</div>
+
+
+<%= f.submit "更新する" %>
+<% end %>

@@ -1,0 +1,33 @@
+
+ <% @posts.each do |post| %>
+    <h2><%= post.name %></h2>
+      <%= link_to "編集する", edit_post_path(post.id) %>
+      <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+      <p>投稿者：<%= link_to users_path(post.user) do %>
+          <%=post.user.username %>
+        <% end %>
+      </p>
+     <%= post.genre.name %><br>
+    <%= post.introduction %><br>
+    約<%= post.age %>歳から<br>
+    約<%= post.time %>分<br>
+
+
+  <% end %>
+
+<h3>コメント</h3>
+
+<div>
+  <p>コメント件数：<%= @comments.count %></p>
+
+  <% @comments.each do |comment| %>
+    <%= comment.user.username %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+  <% end %>
+</div>
+<div>
+  <%= form_with model:[@post, @comment] do |f| %>
+    <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

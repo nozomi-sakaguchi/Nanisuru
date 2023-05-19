@@ -1,0 +1,32 @@
+<h1>ユーザー編集画面</h1>
+
+
+<%= form_with model: @user do |f| %>
+
+    <%= f.label :ユーザーネーム %>
+    <%= f.text_field :username %>
+
+  <div class="field">
+    <label for ="age">年代</label>
+    <%= f.select :age, [['10歳以下',1],['10代',2],['20代',3],['30代',4],['40代',5],['50代',6],['60代',7],['70代',8],['80代',9],['90代',10],['100歳以上',11],['ヒミツ♡',12]], {prompt: "選択してください" } %>
+    <%= f.hidden_field :user_id, :value => @user.id  %>
+  </div>
+
+  <div class="field">
+    <label for ="gender">性別</label>
+    <%= f.select :gender, [['男性',1],['女性',2],['無回答',3],['ヒミツ♡',4]], {prompt: "選択してください" } %>
+    <%= f.hidden_field :user_id, :value => @user.id %>
+  </div>
+
+  <div class="field">
+   <%= f.label :自己紹介 %>
+   <%= f.text_field :introduction %>
+  </div>
+
+     <div class="form-user">
+        <%= f.submit "更新する", class: "btn btn-secondary btn-sm" %>
+
+        <%= link_to "退会する" , users_secession_path, class: "btn btn-danger btn-sm" %>
+      </div>
+
+<% end %>

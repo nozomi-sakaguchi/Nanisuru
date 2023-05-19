@@ -1,0 +1,22 @@
+<%= flash[:notice] %><br>
+
+<h1 class="text-center">ナニスル？</h1>
+
+  <div class="row">
+    <h2>あそび</h2>(全<%= @post %>件）
+    <%= link_to"あそびを投稿する", new_post_path,class:" btn" %>
+  </div>
+
+  <% @posts.each do |post| %>
+    <%= link_to users_path(post.user) do %>
+      <%=post.user.username %>
+    <% end %>
+
+    <%= link_to post_path(post.id) do %>
+      <%= post.name %>
+    <% end %>
+
+    約<%= post.time %>分
+      <%= post.genre.name %>
+  <% end %>
+</div>
