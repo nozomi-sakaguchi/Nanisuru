@@ -9,7 +9,9 @@ class Public::UsersController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @user = User.find(params[:user_id])
+
+
   end
 
   def show
@@ -43,4 +45,7 @@ class Public::UsersController < ApplicationController
      params.require(:user).permit(:username, :age, :gender, :introduction, :is_deleted )
   end
 
+  def posts_params
+    params.require(:post).permit(:user_id, :genre_id, :name ,:introduction, :time, :cost, :age)
+  end
 end

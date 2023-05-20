@@ -17,9 +17,8 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @posts = Post.all
     @comment = Comment.new
-    @comments = Comment.all
+    @comments = @post.comments.all
   end
 
   def edit
@@ -28,8 +27,14 @@ class Public::PostsController < ApplicationController
 
   def update
     post = Post.find(params[:id])
-    post.update
+    post.update(posts_params)
     redirect_to post_path(post.id)
+  end
+
+  def destroy
+    post =Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path
   end
 
  private

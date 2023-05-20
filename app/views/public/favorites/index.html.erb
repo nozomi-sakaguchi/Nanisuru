@@ -1,0 +1,7 @@
+<h1>お気に入り一覧</h1>
+
+    <% @favorites.each do |favorite| %>
+
+      <%= favorite.post.user.username %>
+      <%= favorite.post.name %> <%= link_to "詳細", post_path(favorite.post_id) %>
+    <% end %>

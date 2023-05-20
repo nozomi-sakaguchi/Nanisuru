@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'favorites/index'
+    get 'favorites/create'
+    get 'favorites/destroy'
+  end
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -19,10 +24,13 @@ Rails.application.routes.draw do
 
     resources :posts,     only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resources :comments, only: [:create, :destroy]
+      resource :favorites, only: [:create,:destroy]
     end
-    resources :users,     only: [:index,:show, :edit, :update]
+    resources :users,     only: [:index,:show, :edit, :update] do
+      resources :favorites, only:[:index]
+    end
     resources :comments,  only: [:new, :index, :show, :edit, :update]
-    resources :favorites, only: [:create, :destroy]
+    resources :favorites, only: [:index]
   end
 
 

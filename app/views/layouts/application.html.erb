@@ -45,7 +45,7 @@
               <%=link_to "マイページ", user_path(current_user), class: "btn btn-outline-warning" %>
             </li>
             <li class="nav_item">
-              <%=link_to "お気に入り"  , homes_about_path,class: "btn btn-outline-danger" %>
+              <%=link_to "お気に入り"  , favorites_path,class: "btn btn-outline-danger" %>
             </li>
             <li class="nav_item">
               <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary" %>

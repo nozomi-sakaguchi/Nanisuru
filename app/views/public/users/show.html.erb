@@ -2,35 +2,35 @@
 
 <h1>マイページ</h1>
 
-<table class="table">
-  <tr><th>ユーザーネーム</th><td><%= @user.username %></td></tr>
-  <tr><th>年代</th><td><%= @user.age %></td></tr>
-  <tr><th>性別</th><td><%= @user.gender %></td></tr>
-  <tr><th>自己紹介</th></th><td><%= @user.introduction %></td></tr>
-</table>
+  <table class="table">
+    <tr><th>ユーザーネーム</th><td><%= @user.username %></td></tr>
+    <tr><th>年代</th><td><%= @user.age %></td></tr>
+    <tr><th>性別</th><td><%= @user.gender %></td></tr>
+    <tr><th>自己紹介</th></th><td><%= @user.introduction %></td></tr>
+  </table>
 
-<%= link_to "編集する ", edit_user_path(current_user) %>
+  <%= link_to "編集する ", edit_user_path(current_user) %>
 
 
-
-<table>
-  <thead>
-  <tr>
-    <th>投稿日</th>
-    <th>遊び名</th>
-  </tr>
-  </thead>
-</table>
-
-<% @posts.each do |post| %>
-  <tbody>
+<h2>遊び一覧</h2>
+  <table class = "table">
+    <thead>
     <tr>
-      <td><%= post.created_at %></td>
-      <td><%= post.name %>
+      <th>投稿日</th>
+      <th>遊び名</th>
     </tr>
-  </tbody>
+    </thead>
 
-
-<% end %>
+  <% @posts.each do |post| %>
+    <tbody>
+      <tr>
+        <td><%= l post.created_at %></td>
+        <td><%= link_to post_path(post.id) do %>
+            <%= post.name %></td>
+            <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+  </table>
 
 </div>
