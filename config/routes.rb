@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     get root to: 'homes#top'
     get 'users/post_index'   => 'users#post_index'
 
-    resources :posts,      only: [:index, :show, :edit, :update, :destory]
+    resources :posts,      only: [:index, :show, :edit, :update, :destroy]
     resources :users,      only: [:index, :show, :edit, :update]
     resources :comments,   only: [:index, :destroy]
     resources :genres,     only: [:index, :create, :edit, :update]

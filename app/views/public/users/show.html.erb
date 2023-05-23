@@ -9,10 +9,11 @@
     <tr><th>自己紹介</th></th><td><%= @user.introduction %></td></tr>
   </table>
 
-  <%= link_to "編集する ", edit_user_path(current_user) %>
+  <%= link_to "編集する ", edit_user_path(current_user) %><br>
 
+<%= link_to "コメントの一覧ページへ", comments_path(id: @user.id)  %>
 
-<h2>遊び一覧</h2>
+<h2>投稿した遊び一覧</h2>
   <table class = "table">
     <thead>
     <tr>

@@ -1,7 +1,5 @@
 class Public::CommentsController < ApplicationController
   def new
-    @comment= Comment.new
-
   end
 
   def create
@@ -14,6 +12,8 @@ class Public::CommentsController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:id])
+    @comments = @user.comments.all
   end
 
   def show
@@ -22,6 +22,10 @@ class Public::CommentsController < ApplicationController
   def edit
   end
 
+  def destroy
+    Comment.find(params[:id]).destroy
+    redirect_to post_path(params[:post_id])
+  end
 
 
   private

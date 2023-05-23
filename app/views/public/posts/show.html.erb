@@ -1,7 +1,9 @@
 
-
+<div>
     <h2><%= @post.name %></h2>
       <%= link_to "編集する", edit_post_path(@post.id) %>
+
+  </div>
           投稿者：<%= link_to users_path(@post.user) do %>
             <%=@post.user.username %>
           <% end %>
@@ -32,15 +34,18 @@
   <div>
     <p>コメント件数：<%= @comments.count %></p>
 
-    <% @comments.each do |comment| %>
-      <%= comment.user.username %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% end %>
-  </div>
-
-  <div>
+     <div>
     <%= form_with model:[@post, @comment] do |f| %>
       <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
       <%= f.submit "送信する" %>
     <% end %>
   </div>
+
+
+    <% @comments.each do |comment| %>
+      <%= comment.user.username %>
+      <%= comment.created_at.strftime('%Y/%m/%d') %>
+      <%= comment.comment %>
+    <% end %>
+  </div>
+

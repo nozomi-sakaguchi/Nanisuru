@@ -4,8 +4,15 @@ class Admin::PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
+    @comments = Comment.all
   end
 
-  def edit
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to posts_path(post.id)
   end
+
+ 
 end
