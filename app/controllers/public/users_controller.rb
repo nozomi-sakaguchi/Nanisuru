@@ -17,12 +17,18 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = current_user.posts.all
+    @posts = @user.posts.all
   end
 
   def edit
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to post_path
+    end
+   @user = User.find(params[:id])
   end
+
+
 
   def update
     @user = User.find(params[:id])

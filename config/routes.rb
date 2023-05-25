@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :public do
+    get 'genres/show'
+  end
+  namespace :public do
     get 'favorites/index'
     get 'favorites/create'
     get 'favorites/destroy'
@@ -29,8 +32,9 @@ Rails.application.routes.draw do
     resources :users,     only: [:index,:show, :edit, :update] do
       resources :favorites, only:[:index]
     end
-    resources :comments,  only: [:new, :index, :show, :edit, :update]
+    resources :comments,  only: [:create, :index,:destroy ]
     resources :favorites, only: [:index]
+    resources :genres, only: [:show]
   end
 
 

@@ -13,17 +13,19 @@ class Public::PostsController < ApplicationController
   def index
     @posts = Post.all
     @post = @posts.count
+    @genres = Genre.all
   end
 
   def show
     @post = Post.find(params[:id])
+    @user = @post.user
     @comment = Comment.new
     @comments = @post.comments.all
   end
 
   def edit
     @post = Post.find(params[:id])
-    unless @post.id == current_user.id
+    unless @post.user_id == current_user.id
       redirect_to post_path
     end
   end

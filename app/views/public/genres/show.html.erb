@@ -1,0 +1,18 @@
+
+
+
+<div class="post_index">
+
+  <h1><%= @genre.name %>の遊び一覧</h1>
+  <table>
+    <tboddy>
+      <tr class="item-box">
+        <% @genre.posts.each do |post| %>
+        <td class= "post">
+          <%= post.name %>
+        <% end %>
+        </td>
+      </tr>
+    </tboddy>
+  </table>
+</div>

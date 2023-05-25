@@ -12,7 +12,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:id])
+    @user = current_user
     @comments = @user.comments.all
   end
 
@@ -24,7 +24,7 @@ class Public::CommentsController < ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    redirect_to comments_path(current_user)
   end
 
 

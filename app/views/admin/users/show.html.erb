@@ -1,5 +1,8 @@
-<h1><%= @user.username %>さんの登録詳細</h1>
- <%= link_to "編集する ", edit_admin_user_path(@user.id) %>
+<div class="container text-center">
+  <div class="row">
+
+  <div class="user_information col-4">
+
   <table class="table">
 
     <tr><th>ユーザーID</th><td><%= @user.id %></td></tr>
@@ -17,9 +20,11 @@
     <tr><th>性別</th><td><%= @user.gender %></td></tr>
     <tr><th>自己紹介</th></th><td><%= @user.introduction %></td></tr>
   </table>
+   <%= link_to "編集する ", edit_admin_user_path(@user.id),  class:"btn btn-outline-dark" %>
+</div>
 
-
-<h1><%= @user.username %>さんの投稿一覧</h1>
+<div class="detail col-8">
+<h3 class="post" ><%= @user.username %>さんの投稿一覧</h3>
   <table class = "table">
     <thead>
     <tr>
@@ -40,7 +45,7 @@
   <% end %>
   </table>
 
-<h1><%= @user.username %>さんのコメント一覧</h1>
+<h3 class="user_comment mt-5"><%= @user.username %>さんのコメント一覧</h3>
 <table class="table">
   <thead>
     <tr>
@@ -62,3 +67,6 @@
     </tbody>
   <% end %>
   </table>
+  </div>
+  </div>
+  </div>

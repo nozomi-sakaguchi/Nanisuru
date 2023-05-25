@@ -1,6 +1,14 @@
-<%= flash[:notice] %><br>
 
 <h1 class="text-center">ナニスル？</h1>
+
+<div class= "row">
+  <div class= "squeeze col-2">
+    <% @genres.each do|genre| %>
+      <%= link_to genre_path(genre) do %>
+        <%= genre.name %><br>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="row">
     <h2>あそび</h2>(全<%= @post %>件）
@@ -8,7 +16,7 @@
   </div>
 
   <% @posts.each do |post| %>
-    <%= link_to user_path(id: post.user.id)  do %>
+    <%= link_to user_path(id: post.user.id) do %>
       <%=post.user.username %>
     <% end %>
 
@@ -19,4 +27,5 @@
     約<%= post.time %>分
       <%= post.genre.name %>
   <% end %>
+</div>
 </div>

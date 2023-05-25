@@ -1,6 +1,6 @@
 class Public::FavoritesController < ApplicationController
   def index
-  @favorites= Favorite.includes(:post).order("created_at DESC")
+  @favorites= current_user.favorites.includes(:post).order("created_at DESC")
   end
 
   def create

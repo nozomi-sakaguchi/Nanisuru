@@ -1,6 +1,12 @@
 <h1><%= @user.username %>さんのコメント一覧</h1>
 
  <% @comments.each do |comment| %>
- <%= comment.post.name %>
+ <%= link_to post_path(comment.post.id) do %>
+  <%= comment.post.name %>
+ <% end %>
  <%= comment.comment %>
+
+<%= link_to "コメントを削除する", comment_path(comment.id) ,method: :delete,  "data-confirm" => "本当に削除しますか？" %>
+
+
  <% end %>
