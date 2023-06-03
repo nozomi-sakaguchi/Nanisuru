@@ -1,13 +1,15 @@
-<div class= "container text-center">
+<%= flash[:notice] %>
+<div class= "container text-center" style=height:900px;>
+
   <h1>ナニスル？</h1>
 
     <p>
       好きな遊びや楽しい遊びを紹介しよう<br>
       そしてまだ知らない遊びと出会っちゃおう！
     </p>
-    <p>今日ナニスル？</p>
+    <p>今日、ナニスル？</p>
 
-  <div class= "row ">
+  <div class= "row justify-content-center">
     <div class="row mr-5">
       初めての方 <%=link_to "新規登録", new_user_registration_path, class:"btn btn-danger"%>
     </div>

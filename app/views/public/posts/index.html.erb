@@ -1,31 +1,44 @@
+<%= flash[:notice] %>
 
-<h1 class="text-center">ナニスル？</h1>
+<div class="container  col-md-10 col-md-offset-1">
 
-<div class= "row">
-  <div class= "squeeze col-2">
-    <% @genres.each do|genre| %>
-      <%= link_to genre_path(genre) do %>
-        <%= genre.name %><br>
+
+  <div class= "row">
+    <ul>
+    <div class= "squeeze mt-5 mr-5 ">
+      <div class="genre_title">ジャンル一覧</div>
+      <% @genres.each do|genre| %>
+        <%= link_to genre_path(genre) do %>
+          <div class="genre_name">
+            <%= genre.name %><br>
+          </div>
+        <% end %>
       <% end %>
+    </ul>
+
+
+  <div class="post">
+    <div class="row d-flex align-items-end ">
+      <h2 class="post_index_title">あそび</h2>
+      <p>(全<%= @post %>件)</p>
+
+      <p class= "post_new"><%= link_to"あそびを投稿する", new_post_path, class:" btn btn-outline-danger " %></p>
+    </div>
+
+
+    <div class="balloon1">
+      <p>NEW PLAY!</p>
+    </div>
+
+    <% @posts.each do |post| %>
+      <div class="box1">
+        <%= link_to post_path(post.id) do %>
+          <p class="post_name"><%= post.name %></p>
+        <% end %>
+        <%= link_to user_path(id: post.user.id) do %>
+          <i class="fas fa-user"></i><%=post.user.username %>
+        <% end %>
+      </div>
     <% end %>
   </div>
-
-  <div class="row">
-    <h2>あそび</h2>(全<%= @post %>件）
-    <%= link_to"あそびを投稿する", new_post_path,class:" btn" %>
-  </div>
-
-  <% @posts.each do |post| %>
-    <%= link_to user_path(id: post.user.id) do %>
-      <%=post.user.username %>
-    <% end %>
-
-    <%= link_to post_path(post.id) do %>
-      <%= post.name %>
-    <% end %>
-
-    約<%= post.time %>分
-      <%= post.genre.name %>
-  <% end %>
-</div>
 </div>

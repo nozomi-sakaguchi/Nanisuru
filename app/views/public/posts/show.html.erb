@@ -1,52 +1,61 @@
+<div class="container  col-md-6 col-md-offset-3">
 
-<div>
-    <h2><%= @post.name %></h2>
+  <div class="row  d-flex align-items-end mb-2">
+    <h2 class="post_name mr-5"><%= @post.name %></h2>
       <% if @user == current_user %>
-      <%= link_to "編集する", edit_post_path(@post.id) %>
+        <%= link_to "編集する", edit_post_path(@post.id), class:"btn btn-outline-danger " %>
       <% end %>
-  </div>
-          投稿者：<%= link_to user_path(id: @post.user.id) do %>
-                    <%=@post.user.username %>
-                  <% end %>
-        <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-
-      <%= @post.genre.name %><br>
-      <%= @post.introduction %><br>
-      約<%= @post.age %>歳から<br>
-      約<%= @post.time %>分<br>
+   </div>
 
       <% if @post.favorited_by?(current_user) %>
-        <p>
-          <%= link_to post_favorites_path(@post), method: :delete do %>
-            ♥<%= @post.favorites.count %>お気に入り
-          <% end %>
-        </p>
-      <% else %>
-        <p>
-          <%= link_to post_favorites_path(@post), method: :post do %>
-          ♡<%= @post.favorites.count %> お気に入り
-          <% end %>
-        </p>
+      <p class="favorite">
+        <%= link_to post_favorites_path(@post), method: :delete do %>
+         ♥ <%= @post.favorites.count %>お気に入り
+        <% end %>
+      </p>
+        <% else %>
+      <p class="favorite">
+        <%= link_to post_favorites_path(@post), method: :post do %>
+           ♡ <%= @post.favorites.count %> お気に入り
+        <% end %>
+      </p>
       <% end %>
 
 
-<h3>コメント</h3>
+  <% if @post.post_images.attached? %>
+    <% @post.post_images.each do|image| %>
+      <%= image_tag image.variant(resize_to_limit: [300,300]), class:"mr-2" %>
+    <% end %>
+  <% end %>
+
+  <p class="introduction mt-3"><i class="fas fa-shapes"></i>  あそび方説明：<br><%= @post.introduction %></p>
+  <p><i class="far fa-folder mt-5"></i>  ジャンル： <%= @post.genre.name %></p>
+  <p><i class="far fa-calendar-alt"></i>  投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p><i class="far fa-user"></i>  投稿者：<%= link_to user_path(id: @post.user.id) do %>
+                                            <%=@post.user.username %>
+                                          <% end %>
+  </p>
+
+  <h3 class="comment mt-5 mr-5">コメント  <i class="fas fa-comment-dots"></i></h3>
 
   <div>
-    <p>コメント件数：<%= @comments.count %></p>
-
-     <div>
     <%= form_with model:[@post, @comment] do |f| %>
-      <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
+      <%= f.text_area :comment, rows: '4', cols: '40', placeholder: "コメントをここに"   %>
+      <%= f.submit "コメントする", class:"btn btn-outline-info  ml-2 mt-2 mb-5" %>
     <% end %>
   </div>
 
+  <table class= "table mb-5" >
+    コメント件数：<%= @comments.count %>
 
     <% @comments.each do |comment| %>
-      <%= comment.user.username %>
-      <%= comment.created_at.strftime('%Y/%m/%d') %>
-      <%= comment.comment %>
+    <tr>
+      <td><%= comment.user.username  %></td>
+      <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+      <td><%= comment.comment %></td>
+    </tr>
     <% end %>
-  </div>
+  </table>
 
+  </div>
+</div>

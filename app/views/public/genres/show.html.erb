@@ -1,18 +1,16 @@
 
+<div class="container  col-md-6 col-md-offset-3 mb-5">
 
+<h3><%= @genre.name %>の遊び一覧</h3>
+  <% @genre.posts.each do |post| %>
+    <div class="box1">
+      <%= link_to post_path(post.id) do %>
+         <p class="post_name"><%= post.name %></p>
+      <% end %>
 
-<div class="post_index">
-
-  <h1><%= @genre.name %>の遊び一覧</h1>
-  <table>
-    <tboddy>
-      <tr class="item-box">
-        <% @genre.posts.each do |post| %>
-        <td class= "post">
-          <%= post.name %>
-        <% end %>
-        </td>
-      </tr>
-    </tboddy>
-  </table>
+      <%= link_to user_path(post.user) do %>
+        <%= post.user.username %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

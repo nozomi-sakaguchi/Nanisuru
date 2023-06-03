@@ -1,8 +1,21 @@
-<h1>お気に入り</h1>
 
-    <% @favorites.each do |favorite| %>
+<div class="container  col-md-6 col-md-offset-3 mb-5">
+  <h3 class="favorite_title text-center" >お気に入りのあそび</h3>
+    <% if @favorites.length > 0 %>
+      <% @favorites.each do |favorite| %>
+        <div class="box1">
+          <%= link_to post_path(favorite.post_id) do %>
+            <p class="post_name"><%= favorite.post.name %></p>
+          <% end %>
 
-      <%= favorite.post.user.username %>
-      <%= favorite.post.name %> <%= link_to "詳細", post_path(favorite.post_id) %>
+          <%= link_to user_path(id: favorite.post.user.id) do %>
+            <%= favorite.post.user.username %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="text text-center mt-5">  お気に入りのあそびがありません。</p>
 
-    <% end %>
+  <% end %>
+
+</div>

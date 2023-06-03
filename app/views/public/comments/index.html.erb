@@ -1,12 +1,21 @@
-<h1><%= @user.username %>さんのコメント一覧</h1>
+<%= flash[:notice] %><br>
 
- <% @comments.each do |comment| %>
- <%= link_to post_path(comment.post.id) do %>
-  <%= comment.post.name %>
- <% end %>
- <%= comment.comment %>
+<div class="container  col-md-10 col-md-offset-1 mb-5 ">
+  <h3 class="comment_title text-center"><%= @user.username %>さんのコメント一覧</h3>
 
-<%= link_to "コメントを削除する", comment_path(comment.id) ,method: :delete,  "data-confirm" => "本当に削除しますか？" %>
+  <% if @comments.length > 0 %>
+    <table class="table mt-5">
 
-
- <% end %>
+    <% @comments.each do |comment| %>
+      <tr>
+        <%= link_to post_path(comment.post.id) do %>
+          <td><%= comment.post.name %></td>
+        <% end %>
+        <td><%= comment.comment %></td>
+        <td><%= link_to "コメントを削除する", comment_path(comment.id) ,method: :delete,  "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-5"  %></td>
+      </tr>
+    <% end %>
+    </table>
+  <% else %>
+    <p class="text text-center mt-5">コメントしたあそびはありません</p>
+  <% end %>

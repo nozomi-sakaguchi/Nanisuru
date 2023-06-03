@@ -1,36 +1,48 @@
+<%= flash[:notice] %>
+
 <div class="container text-center">
+  <div class="row">
+    <div class="profile col-4">
 
-  <table>
-    <tr><th>ユーザーネーム</th><td><%= @user.username %></td></tr>
-    <tr><th>年代</th><td><%= @user.age %></td></tr>
-    <tr><th>性別</th><td><%= @user.gender %></td></tr>
-    <tr><th>自己紹介</th></th><td><%= @user.introduction %></td></tr>
-  </table>
+    <p class="username"><%= @user.username %></p>
+    <div class="profile text-left">
+      <tr><th>年代：</th><td><%= @user.age %></td></tr><br>
+      <tr><th>性別：</th><td><%= @user.gender %></td></tr><br>
+      <tr><th>自己紹介：</th></th><td><%= @user.introduction %></td></tr><br>
+    </div>
 
-  <% if @user == current_user %>
-    <%= link_to "プロフィールを編集する ", edit_user_path(current_user), class: "btn btn-outline-warning" %><br>
-    <%= link_to "コメント履歴", comments_path(id: @user.id)  %>
-   <% end %>
+    <% if @user == current_user %>
+      <%= link_to "プロフィールを編集する ", edit_user_path(current_user), class: "btn btn-outline-info mt-5 mb-3" %><br>
+      <%= link_to "コメント履歴", comments_path(id: @user.id), class: "btn btn-info mb-5" %>
+    <% end %>
+   </div>
 
-<h2>投稿した遊び一覧</h2>
-  <table class = "table">
-    <thead>
-    <tr>
-      <th>投稿日</th>
-      <th>遊び名</th>
-    </tr>
-    </thead>
+    <div class="user_post col-8">
+      <h2>投稿した遊び一覧</h2>
 
-  <% @posts.each do |post| %>
-    <tbody>
-      <tr>
-        <td><%= l post.created_at %></td>
-        <td><%= link_to post_path(post.id) do %>
-            <%= post.name %></td>
-            <% end %>
-      </tr>
-    </tbody>
-  <% end %>
-  </table>
+      <% if @posts.length > 0 %>
+        <table class = "table">
+          <thead>
+            <tr>
+              <th>投稿日</th>
+              <th>遊び名</th>
+            </tr>
+          </thead>
 
+        <% @posts.each do |post| %>
+          <tbody>
+            <tr>
+              <td><%= l post.created_at %></td>
+              <td><%= link_to post_path(post.id) do %>
+                    <%= post.name %></td>
+                  <% end %>
+            </tr>
+          </tbody>
+        <% end %>
+        </table>
+      <% else %>
+        <p class="text mt-5">投稿したあそびはありません。</p>
+      <% end %>
+    </div>
+  </div>
 </div>

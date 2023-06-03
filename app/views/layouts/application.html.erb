@@ -7,58 +7,59 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-dark" style="background:#00B3CC;>
       <div class="container-fluid">
         <a class="navbar-brand" >ナニスル？</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler  navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ">
+        <ul class="navbar-nav ml-auto text-white">
           <% if admin_signed_in? %>
-            <li class="nav_item ">
-              <%= link_to "投稿一覧" , admin_posts_path, class: "btn btn-secondary" %>
+            <li class="nav_item mr-3">
+              <%= link_to "投稿一覧" , admin_posts_path,  class:"btn btn-outline-light" %>
+            </li>
+            <li class="nav_item mr-3">
+              <%= link_to "会員一覧" , admin_users_path, class:"btn btn-outline-light" %>
+            </li>
+            <li class="nav_item mr-3">
+              <%= link_to "ジャンル一覧" ,admin_genres_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav_item">
-              <%= link_to "会員一覧" , admin_users_path, class: "btn btn-secondary" %>
-            </li>
-            <li class="nav_item">
-              <%= link_to "ジャンル一覧" ,admin_genres_path, class: "btn btn-secondary" %>
-            </li>
-            <li class="nav_item">
-              <%= link_to "ログアウト" , destroy_admin_session_path , method: :delete , class: "btn btn-secondary" %>
+              <%= link_to "ログアウト" , destroy_admin_session_path , method: :delete , class:"btn btn-outline-light" %>
             </li>
           <% elsif signed_in? %>
-            <li class="nav_item">
-              <%=link_to "あそび一覧", posts_path, class: "btn btn-outline-info" %>
+            <li class="nav_item mr-3 mb-1">
+              <%=link_to "あそび一覧", posts_path, class: "text-white" %>
             </li>
-            <li class="nav_item">
-              <%=link_to "マイページ", user_path(current_user), class: "btn btn-outline-warning" %>
+            <li class="nav_item mr-3 mb-1">
+              <%=link_to "マイページ", user_path(current_user), class: "text-white" %>
             </li>
-            <li class="nav_item">
-              <%=link_to "お気に入り"  , favorites_path,class: "btn btn-outline-danger" %>
+            <li class="nav_item mr-3 mb-1" >
+              <%=link_to "お気に入り"  , favorites_path, class: "text-white" %>
             </li>
-            <li class="nav_item">
-              <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-outline-primary" %>
+            <li class="nav_item ">
+              <%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-white" %>
             </li>
           <% else %>
-            <li class="nav_item mr-5">
-              <%=link_to "サイトについて", homes_about_path, class: "btn btn-outline-secondary" %>
+            <li class="nav_item mr-3 mb-1">
+              <%=link_to "サイトについて", homes_about_path, class: "text-white"  %>
             </li>
-            <li class="nav_item mr-5">
-              <%=link_to "新規登録", new_user_registration_path, class: "btn btn-outline-danger" %>
+            <li class="nav_item mr-3 mb-1">
+              <%=link_to "新規登録", new_user_registration_path, class: "text-white" %>
             </li>
-            <li class="nav_item">
-              <%=link_to "ログイン",  new_user_session_path, class: "btn btn-outline-primary" %>
+            <li class="nav_item mr-3 mb-1">
+              <%=link_to "ログイン",  new_user_session_path, class: "text-white" %>
             </li>
             <li>
-              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+              <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "text-white" %>
             </li>
 
           <% end %>
@@ -68,8 +69,14 @@
       </nav>
     </header>
 
-    <div class="container mt-5">
+    <main class="container mt-5 mb-auto ">
       <%= yield %>
-    </div>
+    </main>
+
+    <footer class=" text-center text-white", style=background:#00B3CC;>
+      <div class="container ">
+            <p>Copyright © nanisuru? All Rights Reserved. </p>
+      </div>
+    </footer>
   </body>
 </html>

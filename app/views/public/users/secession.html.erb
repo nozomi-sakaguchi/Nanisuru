@@ -1,9 +1,9 @@
 <div class="container text-center">
-<h3>本当に退会しますか？</h3>
-<p>退会されますと、いままでの投稿履歴やお気に入りの閲覧ができなくなります。</p>
+  <h3>本当に退会しますか？</h3>
+    <p class="secession my-5">退会されますと、いままでの投稿履歴やお気に入りの閲覧ができなくなります。</p>
 
-
-<%= link_to "退会しない", user_path(current_user), class: "btn btn-outline-warning"%>
-
-<%= link_to "退会する", users_withdrawal_path(current_user) , method: :patch %>
+  <div class="link mb-5">
+    <%= link_to "退会しない", user_path(current_user), class: "btn btn-outline-warning mr-5"%>
+    <%= link_to "退会する", users_withdrawal_path(current_user) , method: :patch , class: "btn btn-outline-danger mr-5" %>
+  </div>
 </div>

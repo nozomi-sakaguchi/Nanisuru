@@ -12,7 +12,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @post= @user.posts
     @posts= Post.all
-
   end
 
   def show
@@ -28,11 +27,10 @@ class Public::UsersController < ApplicationController
    @user = User.find(params[:id])
   end
 
-
-
   def update
     @user = User.find(params[:id])
     @user.update(users_params)
+    flash[:notice] = "更新しました。"
     redirect_to user_path(current_user)
   end
 
@@ -43,13 +41,14 @@ class Public::UsersController < ApplicationController
     @user = current_user
     @user.update(is_deleted: true)
     reset_session
+    flash[:notice] = "ご利用ありがとうございました。"
     redirect_to root_path
   end
 
   private
 
   def users_params
-     params.require(:user).permit(:username, :age, :gender, :introduction, :is_deleted )
+     params.require(:user).permit(:username, :age, :gender, :introduction, :is_deleted, :post_images )
   end
 
   def posts_params

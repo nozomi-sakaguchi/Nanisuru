@@ -6,7 +6,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def ensure_normal_user
     if resource.email == 'guest@guest.mail'
-      redirect_to user_path(@user.id), notice: 'ゲストユーザーは閲覧のみ可能です。。'
+      redirect_to user_path(@user.id), notice: 'ゲストユーザーは閲覧のみ可能です。'
     end
   end
 

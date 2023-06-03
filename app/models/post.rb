@@ -10,5 +10,14 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  has_many_attached :post_images
+
+  def get_post_images
+    unless post_images.attached?
+       file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+        post_images.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
+    end
+    post_images.variant(resize_to_limit: [with, height]).processed
+  end
 
 end
