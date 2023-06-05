@@ -3,8 +3,11 @@
   <div class= "genre_new mb-5">
   <h2>ジャンル作成</h2>
     <%= form_with model: @genre, url:admin_genres_path do |f| %>
+    <div class="field align-bottom">
       <%= f.text_field :name %>
-      <%= f.submit "作成"%>
+      <%= f.submit "作成" , class:"btn btn-outline-dark ml-2 mb-1"  %>
+    </div>
+
     <% end %>
   </div>
 

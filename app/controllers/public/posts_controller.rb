@@ -12,7 +12,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.page(params[:page]).order(created_at: :desc)
     @post = @posts.count
     @genres = Genre.all
   end
@@ -21,7 +21,8 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     @comment = Comment.new
-    @comments = @post.comments.all
+    @comments = @post.comments.page(params[:page]).order(created_at: :desc)
+
   end
 
   def edit

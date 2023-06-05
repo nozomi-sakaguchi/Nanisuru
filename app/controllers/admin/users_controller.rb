@@ -5,8 +5,8 @@ class Admin::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.all
-    @comments = @user.comments.all
+    @posts = @user.posts.page(params[:page]).order(created_at: :desc)
+    @comments = @user.comments.page(params[:page]).order(created_at: :desc)
   end
 
   def edit
@@ -16,6 +16,7 @@ class Admin::UsersController < ApplicationController
   def update
     user = User.find(params[:id])
     user.update(users_params)
+    flash[:notice] = "更新しました。"
     redirect_to admin_users_path
   end
 

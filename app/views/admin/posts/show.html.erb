@@ -1,27 +1,37 @@
-<h2><%= @post.name %></h2>
-      <%= link_to "遊びの削除する" ,admin_post_path(@post.id) , method: :delete , "data-confirm" => "本当に削除しますか？" %>
-            投稿者：<%= link_to admin_user_path(@post.user) do %>
-            <%=@post.user.username %>
-          <% end %>
-          <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+<%= flash[:notice] %>
+<div class="col-6 offset-3">
 
-        <%= @post.genre.name %><br>
-        <%= @post.introduction %><br>
-        約<%= @post.age %>歳から<br>
-        約<%= @post.time %>分<br>
+  <h2 class= "post_name mb-3"><%= @post.name %></h2>
+    <p>
+      <% if @post.post_images.attached? %>
+        <% @post.post_images.each do|image| %>
+          <%= image_tag image.variant(resize_to_limit: [300,300]), class:"mr-2" %>
+        <% end %>
+      <% end %>
+    </p>
+    <p>あそび方説明： <%= @post.introduction %></p>
+    <p>ジャンル： <%= @post.genre.name %></p>
+    <p>投稿日時： <%= @post.created_at.strftime('%Y/%m/%d') %></p>
+    <p> 投稿者：  <%= link_to admin_user_path(@post.user) do %>
+                    <%=@post.user.username %>
+                  <% end %>
+    </p>
 
-<h3>コメント</h3>
-<p>コメント件数：<%= @comments.count %></p>
-
-
-  <tableclass ="table">
-  <tr><% @comments.each do |comment| %>
-    <th><%= comment.user.username %></th>
-    <td><%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %></td>
-
-    <td><%= link_to "コメントの削除" ,admin_comment_path(comment.id) , method: :delete , "data-confirm" => "本当に削除しますか？" %></td>
-</tr> <% end %>
-</table>
+    <%= link_to "遊びの削除する" ,admin_post_path(@post.id) , method: :delete , "data-confirm" => "本当に削除しますか？" ,class:"btn btn-danger" %>
 
 
+  <h3 class="comment mt-5">コメント</h3>
+    <p>コメント件数：<%= @comments.count %></p>
 
+  <table class ="table">
+      <% @comments.each do |comment| %>
+    <tr>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= comment.user.username %></td>
+        <td><%= comment.comment %></td>
+        <td><%= link_to "コメントの削除" ,admin_comment_path(comment.id) , method: :delete , "data-confirm" => "本当に削除しますか？" %></td>
+    </tr>
+      <% end %>
+  </table>
+  <%= paginate @comments %>
+</div>

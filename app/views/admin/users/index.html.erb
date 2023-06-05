@@ -1,8 +1,9 @@
-<h1>会員一覧</h1>
+<%= flash[:notice] %>
+
+<h4>会員一覧</h4>
 
   <table class="table">
       <tr>
-        <th></th>
         <th>ユーザーID</th>
         <th>ユーザーネーム</th>
         <th>ユーザーステータス</th>
@@ -24,9 +25,8 @@
           <% end %>
         </td>
         <td><%= link_to "編集" , edit_admin_user_path(user.id) %></td>
-      </tr
+      </tr>
+  <% end %>
   </table>
-
-<% end %>
 
 <%= paginate @users %>

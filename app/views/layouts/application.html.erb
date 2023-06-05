@@ -8,7 +8,19 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <!-- Add the slick-theme.css if you want default styling -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
+    <style>
+      .slick-prev:before, .slick-next:before {
+        color: red;
+      }
+    </style>
   </head>
 
   <body>
@@ -23,13 +35,13 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto text-white">
           <% if admin_signed_in? %>
-            <li class="nav_item mr-3">
+            <li class="nav_item mr-3 mb-1">
               <%= link_to "投稿一覧" , admin_posts_path,  class:"btn btn-outline-light" %>
             </li>
-            <li class="nav_item mr-3">
+            <li class="nav_item mr-3 mb-1">
               <%= link_to "会員一覧" , admin_users_path, class:"btn btn-outline-light" %>
             </li>
-            <li class="nav_item mr-3">
+            <li class="nav_item mr-3 mb-1">
               <%= link_to "ジャンル一覧" ,admin_genres_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav_item">

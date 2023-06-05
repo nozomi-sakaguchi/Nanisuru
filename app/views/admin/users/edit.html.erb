@@ -1,18 +1,18 @@
 
-<h1><%= @user.username %>さんの編集</h1>
 
-<%= form_with model: @user, url:admin_user_path(@user.id) do |f| %>
- <div class="form_group">
-    <label for= "user_is_deleted">会員ステータス</label><br>
-     <%= f.radio_button :is_deleted, false %>
-    <%= f.label :is_deleted, "有効にする" %>
-    <%= f.radio_button :is_deleted, true %>
-    <%= f.label :is_deleted, "退会済みにする" %>
+<div class="continer text-center">
 
-  </div>
+  <h4><%= @user.username %>さんの編集</h4>
 
-  <div class="actions">
-    <%= f.submit "変更を保存" , class: "btn btn-success btn-sm" %>
-  </div>
+    <%= form_with model: @user, url:admin_user_path(@user.id) do |f| %>
+      <div class="form_group mt-5">
+        <label for= "user_is_deleted"><strong>会員ステータス</strong></label><br>
+        <%= f.radio_button :is_deleted, false %>
+        <%= f.label :is_deleted, "有効にする" %>
+        <%= f.radio_button :is_deleted, true %>
+        <%= f.label :is_deleted, "退会済みにする" %>
+      </div>
 
-  <% end %>
+      <%= f.submit "変更を保存" , class: "btn btn-success btn-sm mt-3 mb-5" %>
+    <% end %>
+</div>

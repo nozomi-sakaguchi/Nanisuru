@@ -6,7 +6,7 @@
   <div class= "row">
     <ul>
     <div class= "squeeze mt-5 mr-5 ">
-      <div class="genre_title">ジャンル一覧</div>
+      <div class="genre_title">ジャンル検索</div>
       <% @genres.each do|genre| %>
         <%= link_to genre_path(genre) do %>
           <div class="genre_name">
@@ -22,7 +22,7 @@
       <h2 class="post_index_title">あそび</h2>
       <p>(全<%= @post %>件)</p>
 
-      <p class= "post_new"><%= link_to"あそびを投稿する", new_post_path, class:" btn btn-outline-danger " %></p>
+      <p class= "post_new ml-5"><%= link_to"あそびを投稿する", new_post_path, class:" btn btn-outline-danger " %></p>
     </div>
 
 
@@ -40,5 +40,6 @@
         <% end %>
       </div>
     <% end %>
+    <%= paginate @posts %>
   </div>
 </div>

@@ -13,7 +13,7 @@ class Public::CommentsController < ApplicationController
 
   def index
     @user = current_user
-    @comments = @user.comments.all
+    @comments = @user.comments.all.order(created_at: :desc)
   end
 
   def show

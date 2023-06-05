@@ -23,9 +23,11 @@
 
 
   <% if @post.post_images.attached? %>
+    <div class="post_image" style="height: 250px; width: 250px; ">
     <% @post.post_images.each do|image| %>
-      <%= image_tag image.variant(resize_to_limit: [300,300]), class:"mr-2" %>
+      <%= image_tag image.variant(resize_to_limit: [240,240]), class:"mr-2" %>
     <% end %>
+    </div>
   <% end %>
 
   <p class="introduction mt-3"><i class="fas fa-shapes"></i>  あそび方説明：<br><%= @post.introduction %></p>
@@ -56,6 +58,6 @@
     </tr>
     <% end %>
   </table>
-
+  <%= paginate @comments %>
   </div>
 </div>

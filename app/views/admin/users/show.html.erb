@@ -43,6 +43,7 @@
       </tr>
     </tbody>
   <% end %>
+  <%= paginate @posts %>
   </table>
 
 <h3 class="user_comment mt-5"><%= @user.username %>さんのコメント一覧</h3>
@@ -66,6 +67,7 @@
       </tr>
     </tbody>
   <% end %>
+  <%= paginate @comments %>
   </table>
   </div>
   </div>
