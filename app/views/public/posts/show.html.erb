@@ -23,9 +23,12 @@
 
 
   <% if @post.post_images.attached? %>
-    <div class="post_image" style="height: 250px; width: 250px; ">
-    <% @post.post_images.each do|image| %>
-      <%= image_tag image.variant(resize_to_limit: [240,240]), class:"mr-2" %>
+    <div class="post_image">
+    <% @post.post_images.each.with_index(1) do|image,i| %>
+      <div>>
+      <%= image_tag image, class:"show-img" %>
+      <p class="text-center"><%= i %>/<%= @post.post_images.count %></p>
+      </div>
     <% end %>
     </div>
   <% end %>
