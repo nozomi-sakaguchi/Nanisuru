@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+
+
   scope module: :public do
     get   root to:  'homes#top'
     get   'homes/about'

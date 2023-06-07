@@ -12,7 +12,9 @@
     </div>
 
     <% if @user == current_user %>
-      <%= link_to "設定", edit_user_path(current_user), class: "btn btn-outline-info mt-5 mb-3" %><br>
+      <% unless current_user.email == "guest@guest.mail" %>
+        <%= link_to "設定", edit_user_path(current_user), class: "btn btn-outline-info mt-5 mb-3" %><br>
+      <% end %>
       <%= link_to "コメント履歴", comments_path(id: @user.id), class: "btn btn-info mb-5" %>
     <% end %>
    </div>

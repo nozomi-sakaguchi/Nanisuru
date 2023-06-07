@@ -5,7 +5,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :ensure_normal_user, only: :edit
 
   def ensure_normal_user
-    if resource.email == 'guest@guest.mail'
+    if resource.email == 'guest@example.com'
       redirect_to user_path(@user.id), notice: 'ゲストユーザーは閲覧のみ可能です。'
     end
   end

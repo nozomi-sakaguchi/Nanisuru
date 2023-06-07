@@ -3,8 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   def self.guest
-    find_or_create_by!(email: 'guest@guest.mail') do |user|
-      user.name = 'ゲストユーザー'
+      #binding.pry
+      find_or_create_by!(username: 'ゲスト',email: 'guest@guest.mail') do |user|
+      user.username = 'ゲスト'
       user.password = SecureRandom.urlsafe_base64
     end
   end

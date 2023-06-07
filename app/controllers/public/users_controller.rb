@@ -1,9 +1,7 @@
 class Public::UsersController < ApplicationController
 
   def guest_log_in
-    user = User.find_or_create_by!(email: 'guest@example.com') do |user|
-      user.password = SecureRandom.urlsafe_base64
-    end
+    user = User.guest
     sign_in user
     redirect_to posts_path, notice: 'ゲストユーザーとしてログインしました。'
   end
@@ -22,7 +20,7 @@ class Public::UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
     unless user.id == current_user.id
-      redirect_to post_path
+      redirect_to user_path(current_user.id)
     end
    @user = User.find(params[:id])
   end

@@ -1,6 +1,9 @@
 class Public::PostsController < ApplicationController
   def new
     @post =Post.new
+    if current_user.email == "guest@guest.mail"
+      redirect_to posts_path
+    end
   end
 
   def create
