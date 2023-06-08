@@ -18,6 +18,11 @@
       <%= f.text_area :introduction %>
     </div>
 
+     <div class="field mb-3">
+      <%= f.label :費用 %>
+      <%= f.text_field :cost %>
+    </div>
+
     <div class="field mb-3">
       <%= f.label :ジャンル %>
       <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択してください"}) %>

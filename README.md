@@ -49,5 +49,6 @@ https://docs.google.com/spreadsheets/d/1iIPEo06OLZDOK4PDOyCeUwHLnowvk_ugLODRTLTp
 - IDE：Cloud9
 
 ## 使用素材
-  使用検討中です
+  ぱくたそ
+  Font Awesome
 

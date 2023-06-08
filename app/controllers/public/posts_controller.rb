@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   def new
     @post =Post.new
     if current_user.email == "guest@guest.mail"
+      flash[:notice] ="ゲストログインは閲覧のみ可能です。"
       redirect_to posts_path
     end
   end
@@ -15,7 +16,11 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.page(params[:page]).order(created_at: :desc)
+    if params[:search].present?
+      @posts = Post.search(params[:search]).page(params[:page]).order(created_at: :desc)
+    else
+      @posts = Post.page(params[:page]).order(created_at: :desc)
+    end
     @post = @posts.count
     @genres = Genre.all
   end
@@ -51,7 +56,7 @@ class Public::PostsController < ApplicationController
  private
 
   def posts_params
-    params.require(:post).permit(:user_id, :genre_id, :name ,:introduction, post_images: [])
+    params.require(:post).permit(:user_id, :genre_id, :name ,:introduction,:cost, post_images: [])
   end
 
 end

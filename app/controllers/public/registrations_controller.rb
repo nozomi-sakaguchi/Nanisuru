@@ -4,11 +4,6 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :ensure_normal_user, only: :edit
 
-  def ensure_normal_user
-    if resource.email == 'guest@example.com'
-      redirect_to user_path(@user.id), notice: 'ゲストユーザーは閲覧のみ可能です。'
-    end
-  end
 
 
   # before_action :configure_sign_up_params, only: [:create]

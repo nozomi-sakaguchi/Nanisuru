@@ -1,20 +1,20 @@
 
 <div class="logn_in text-center" style=height:500px;>
-<h2 class="mb-5">ログイン</h2>
+  <h2 class="mb-5">ログイン</h2>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field mb-4 textalgin-center">
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス"   %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field mb-4 textalgin-center">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", :placeholder => "メールアドレス"   %>
+    </div>
 
-  <div class="field mb-4">
-    <%= f.password_field :password, autocomplete: "current-password", :placeholder => "パスワード"  %>
-  </div>
+    <div class="field mb-4">
+      <%= f.password_field :password, autocomplete: "current-password", :placeholder => "パスワード"  %>
+    </div>
 
-  <div class="actions mt-3 mb-5">
-    <%= f.submit "ログイン",class:"btn btn-outline-success" %>
-  </div>
-<% end %>
+    <div class="actions mt-3 mb-5">
+      <%= f.submit "ログイン",class:"btn btn-outline-success" %>
+    </div>
+  <% end %>
 
-<%= render "public/shared/links" %>
+  <%= render "public/shared/links" %>
 </div>

@@ -5,10 +5,14 @@ class Public::CommentsController < ApplicationController
   def create
     post = Post.find(params[:post_id])
     comment = current_user.comments.new(comments_params)
+    if current_user.email == "guest@guest.mail"
+      flash[:notice] ="ゲストログインは閲覧のみ可能です。"
+      redirect_to posts_path
+    else
     comment.post_id = post.id
     comment.save
     redirect_to post_path(post)
-
+    end
   end
 
   def index

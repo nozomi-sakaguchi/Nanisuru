@@ -1,12 +1,18 @@
 <%= flash[:notice] %>
 
-<div class="container  col-md-10 col-md-offset-1">
+<div class="container  ">
 
 
   <div class= "row">
-    <ul>
-    <div class= "squeeze mt-5 mr-5 ">
-      <div class="genre_title">ジャンル検索</div>
+
+    <div class= "squeeze col-md-2 col-md-offset-2 mt-5 mr-5 ">
+      <%= form_tag(posts_path, method: :get ) do %>
+        <%= text_field_tag :search   %>
+        <%= submit_tag "キーワード検索", name: nil , class:"btn btn-outline-primary mt-1 mb-3" %>
+      <% end %>
+
+      <div class="genre_title mb-1">ジャンル検索</div>
+      <ul>
       <% @genres.each do|genre| %>
         <%= link_to genre_path(genre) do %>
           <div class="genre_name">
@@ -15,9 +21,9 @@
         <% end %>
       <% end %>
     </ul>
+  </div>
 
-
-  <div class="post">
+  <div class="post col-md-6 offset-1 ">
     <div class="row d-flex align-items-end ">
       <h2 class="post_index_title">あそび</h2>
       <p>(全<%= @post %>件)</p>
@@ -35,7 +41,7 @@
           <p class="post_name"><%= post.name %></p>
         <% end %>
         <%= link_to user_path(id: post.user.id) do %>
-          <i class="fas fa-user"></i><%=post.user.username %>
+          <i class="fas fa-user mr-1"></i><%=post.user.username %>
         <% end %>
       </div>
     <% end %>

@@ -6,11 +6,7 @@ class Public::UsersController < ApplicationController
     redirect_to posts_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
-  def index
-    @user = User.find(params[:id])
-    @post= @user.posts
-    @posts= Post.all
-  end
+
 
   def show
     @user = User.find(params[:id])

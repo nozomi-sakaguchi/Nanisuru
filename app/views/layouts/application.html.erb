@@ -9,17 +9,22 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+
     <!-- Add the slick-theme.css if you want default styling -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <!-- Add the slick-theme.css if you want default styling -->
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    
+
     <style>
       .slick-prev:before, .slick-next:before {
         color: red;
       }
+
+      a {
+        color:#000;
+      }
+
     </style>
   </head>
 
@@ -73,7 +78,6 @@
             <li>
               <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "text-white" %>
             </li>
-
           <% end %>
         </ul>
         </div>

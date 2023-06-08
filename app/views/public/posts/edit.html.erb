@@ -4,26 +4,31 @@
   <%= form_with model: @post do |f| %>
     <div class="field mt-5 mb-3">
       <strong><%= f.label :画像の投稿  %></strong><br>
-      <%= f.file_field :post_images, direct_upload: true, multiple: true,  accept: "image/*"%>
+      <%= f.file_field :post_images, direct_uplｓoad: true, multiple: true,  accept: "image/*"%>
     </div>
 
     <div class="field  mb-4">
-      <strong><%= f.label :遊びの題名・名前  %></strong><br>
+      <strong><%= f.label :遊びの題名・名前  %></strong>
       <%= f.text_field :name %>
     </div>
 
     <div class="field mb-4">
-      <strong><%= f.label :遊び方説明・内容説明 %></strong><br>
+      <strong><%= f.label :遊び方説明・内容説明 %></strong>
       <%= f.text_area  :introduction, class:"form-control"%>
     </div>
 
+     <div class="field  mb-4">
+      <strong><%= f.label :費用  %></strong>
+      <%= f.text_field :cost %>
+    </div>
+
+
     <div class="field mb-4">
-      <strong><%= f.label :ジャンル %></strong><br>
+      <strong><%= f.label :ジャンル %></strong>
       <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択してください"}) %>
     </div>
 
     <%= f.submit "更新する",class:"btn btn-primary mb-5" %>
-
   <% end %>
 
   <%= link_to "この遊びを削除する" ,post_path(@post.id) , method: :delete , "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-5" %>
