@@ -52,7 +52,7 @@
       <%= f.text_area :comment, rows: '4', cols: '40', placeholder: "コメントをここに"   %>
       <% if @user == current_user %>
         <% unless current_user.email == "guest@guest.mail" %>
-        <%= f.submit "コメントする", class:"btn btn-outline-info  ml-2 mt-2 mb-5" %>
+        <%= f.submit "コメントする", class:"form-control", class:"btn btn-outline-info  ml-2 mt-2 mb-5" %>
         <% end %>
       <% end %>
     <% end %>
