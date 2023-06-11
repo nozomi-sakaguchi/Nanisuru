@@ -1,7 +1,7 @@
 <div class="container text-center">
 
-  <h2>ユーザー編集画面</h2>
-  
+  <h2>ユーザー編集</h2>
+
     <%= form_with model: @user do |f| %>
       <tr>
 
@@ -29,11 +29,11 @@
       </div>
 
       <div class="form-user  mb-5">
-        <%= f.submit "更新する", class: "btn btn-secondary btn-sm " %>
+        <%= f.submit "保存", class: "btn btn-secondary btn-sm " %>
       </div>
-      
+
       <div class="btn mt-5 mb-5">
-        <%= link_to "退会する" , users_secession_path, class: "btn btn-danger btn-sm" %>
+        <%= link_to "退会" , users_secession_path, class: "btn btn-danger btn-sm" %>
       </div>
 
     <% end %>

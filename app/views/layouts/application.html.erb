@@ -32,7 +32,7 @@
     <header>
       <nav class="navbar navbar-expand-lg navbar-dark" style="background:#00B3CC;>
       <div class="container-fluid">
-        <a class="navbar-brand" >ナニスル？</a>
+        <%= link_to "ナニスル？", root_path , style:"color:#FFF;"%>
         <button class="navbar-toggler  navbar-dark" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -41,10 +41,10 @@
         <ul class="navbar-nav ml-auto text-white">
           <% if admin_signed_in? %>
             <li class="nav_item mr-3 mb-1">
-              <%= link_to "投稿一覧" , admin_posts_path,  class:"btn btn-outline-light" %>
+              <%= link_to "あそび一覧" , admin_posts_path,  class:"btn btn-outline-light" %>
             </li>
             <li class="nav_item mr-3 mb-1">
-              <%= link_to "会員一覧" , admin_users_path, class:"btn btn-outline-light" %>
+              <%= link_to "ユーザーの一覧" , admin_users_path, class:"btn btn-outline-light" %>
             </li>
             <li class="nav_item mr-3 mb-1">
               <%= link_to "ジャンル一覧" ,admin_genres_path, class:"btn btn-outline-light" %>
@@ -68,12 +68,6 @@
           <% else %>
             <li class="nav_item mr-3 mb-1">
               <%=link_to "サイトについて", homes_about_path, class: "text-white"  %>
-            </li>
-            <li class="nav_item mr-3 mb-1">
-              <%=link_to "新規登録", new_user_registration_path, class: "text-white" %>
-            </li>
-            <li class="nav_item mr-3 mb-1">
-              <%=link_to "ログイン",  new_user_session_path, class: "text-white" %>
             </li>
             <li>
               <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "text-white" %>

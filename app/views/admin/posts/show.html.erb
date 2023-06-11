@@ -1,7 +1,8 @@
 <%= flash[:notice] %>
-<div class="col-6 offset-3">
+<div class="col-md-8 offset-3">
 
   <h2 class= "post_name mb-3"><%= @post.name %></h2>
+  <p><%= @post.favorites.count %> お気に入り</p>
     <p>
       <% if @post.post_images.attached? %>
         <% @post.post_images.each do|image| %>
@@ -18,7 +19,7 @@
                   <% end %>
     </p>
 
-    <%= link_to "遊びの削除する" ,admin_post_path(@post.id) , method: :delete , "data-confirm" => "本当に削除しますか？" ,class:"btn btn-danger" %>
+    <%= link_to "あそびの削除" ,admin_post_path(@post.id) , method: :delete , "data-confirm" => "本当に削除しますか？" ,class:"btn btn-danger" %>
 
 
   <h3 class="comment mt-5" >コメント</h3>

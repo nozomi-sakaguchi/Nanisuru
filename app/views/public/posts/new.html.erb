@@ -4,7 +4,7 @@
 
   <%= form_with model: @post, url:posts_path do |f| %>
     <div class="field mt-5 mb-3">
-      <label for= "post_images">画像</label>
+      <label for= "post_images">画像</label>（複数選択可能です。）
       <%= f.file_field :post_images, direct_upload: true, multiple: true,  accept: "image/*"%>
     </div>
 
@@ -28,5 +28,5 @@
       <%= f.collection_select(:genre_id, Genre.all, :id, :name, {prompt:"選択してください"}) %>
     </div>
 
-    <%= f.submit "投稿する", class: "btn btn-secondary  mb-5" %>
+    <%= f.submit "投稿", class: "btn btn-secondary  mb-5" %>
   <% end %>
