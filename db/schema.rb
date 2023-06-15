@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 2023_06_08_012458) do
     t.string "username", default: "", null: false
     t.string "age", default: ""
     t.string "gender", default: ""
-    t.text "introduction", default: ""
+    t.text "introduction"
     t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
