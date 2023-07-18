@@ -5,11 +5,11 @@
   <% @genre.posts.each do |post| %>
     <div class="box1">
       <%= link_to post_path(post.id) do %>
-         <p class="post_name"><%= post.name %></p>
+        <p class="post_name"><%= post.name %></p>
       <% end %>
 
       <%= link_to user_path(post.user) do %>
-         <i class="fas fa-user mr-1"></i><%= post.user.username %>
+        <i class="fas fa-user mr-1"></i><%= post.user.username %>
       <% end %>
     </div>
   <% end %>

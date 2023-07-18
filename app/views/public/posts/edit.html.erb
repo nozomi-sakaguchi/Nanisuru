@@ -17,7 +17,7 @@
       <%= f.text_area  :introduction, class:"form-control", style:"height: 165px;"%>
     </div>
 
-     <div class="field  mb-4">
+    <div class="field  mb-4">
       <strong><%= f.label :費用  %></strong>
       <%= f.text_field :cost, class:"form-control", placeholder: "(例)ボール代 1000円等  費用がかからない場合は記入不要です。"  %>
     </div>
@@ -32,5 +32,4 @@
   <% end %>
 
   <%= link_to "このあそびを削除" ,post_path(@post.id) , method: :delete , "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-5" %>
-
 </div>

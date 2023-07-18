@@ -13,6 +13,14 @@ class Public::CommentsController < ApplicationController
     comment.save
     redirect_to post_path(post)
     end
+
+    if comment.post_id = post.id
+      comment.save
+      redirect_to post_path(post)
+    else
+      flash[:notice] ="空欄で投稿できません。"
+      redirect_to posts_path
+    end
   end
 
   def index

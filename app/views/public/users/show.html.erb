@@ -3,26 +3,25 @@
 <div class="container text-center">
   <div class="row">
     <div class="profile col-md-4">
+      <p class="username mt-5"><%= @user.username %></p>
+      <div class="profile text-left">
+        <tr><th>年代：</th><td><%= @user.age %></td></tr><br>
+        <tr><th>性別：</th><td><%= @user.gender %></td></tr><br>
+        <tr><th>自己紹介：</th></th><td><%= @user.introduction %></td></tr><br>
+      </div>
 
-    <p class="username mt-5"><%= @user.username %></p>
-    <div class="profile text-left">
-      <tr><th>年代：</th><td><%= @user.age %></td></tr><br>
-      <tr><th>性別：</th><td><%= @user.gender %></td></tr><br>
-      <tr><th>自己紹介：</th></th><td><%= @user.introduction %></td></tr><br>
-    </div>
-
-    <% if @user == current_user %>
-      <% unless current_user.email == "guest@guest.mail" %>
-        <%= link_to "設定", edit_user_path(current_user), class: "btn btn-outline-info mt-5 mb-3" %><br>
+      <% if @user == current_user %>
+        <% unless current_user.email == "guest@guest.mail" %>
+          <%= link_to "設定", edit_user_path(current_user), class: "btn btn-outline-info mt-5 mb-3" %><br>
+        <% end %>
+        <%= link_to "コメント履歴", comments_path(id: @user.id), class: "btn btn-info mb-5" %>
       <% end %>
-      <%= link_to "コメント履歴", comments_path(id: @user.id), class: "btn btn-info mb-5" %>
-    <% end %>
-   </div>
+     </div>
 
     <div class="user_post col-md-8">
       <div class="row   align-items-baseline d-flex justify-content-around">
-      <h2 class="title text-center">投稿したあそび一覧</h2>
-      <%= link_to"あそびを投稿する", new_post_path, class:" btn btn-outline-danger " %>
+        <h2 class="title text-center">投稿したあそび一覧</h2>
+        <%= link_to"あそびを投稿する", new_post_path, class:" btn btn-outline-danger " %>
       </div>
       <% if @posts.length > 0 %>
         <table class = "table">

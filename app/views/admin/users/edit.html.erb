@@ -3,15 +3,15 @@
 
   <h4><%= @user.username %>さんの編集</h4>
 
-    <%= form_with model: @user, url:admin_user_path(@user.id) do |f| %>
-      <div class="form_group mt-5">
-        <label for= "user_is_deleted"><strong>会員ステータス</strong></label><br>
-        <%= f.radio_button :is_deleted, false %>
-        <%= f.label :is_deleted, "有効にする" %>
-        <%= f.radio_button :is_deleted, true %>
-        <%= f.label :is_deleted, "退会済みにする" %>
-      </div>
+  <%= form_with model: @user, url:admin_user_path(@user.id) do |f| %>
+    <div class="form_group mt-5">
+      <label for= "user_is_deleted"><strong>会員ステータス</strong></label><br>
+      <%= f.radio_button :is_deleted, false %>
+      <%= f.label :is_deleted, "有効にする" %>
+      <%= f.radio_button :is_deleted, true %>
+      <%= f.label :is_deleted, "退会済みにする" %>
+    </div>
 
-      <%= f.submit "保存" , class: "btn btn-success btn-sm mt-3 mb-5" %>
-    <% end %>
+    <%= f.submit "保存" , class: "btn btn-success btn-sm mt-3 mb-5" %>
+  <% end %>
 </div>

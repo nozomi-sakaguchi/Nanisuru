@@ -1,6 +1,5 @@
 <%= flash[:notice] %>
 <div class="container  col-md-6 col-md-offset-3">
-
   <div class="row  d-flex align-items-top  justify-content-around mb-2">
     <h2 class="post_name mr-5" style= color:#FF8000;><%= @post.name %></h2>
 
@@ -10,10 +9,10 @@
          ♥ <%= @post.favorites.count %>お気に入り
         <% end %>
       </p>
-        <% else %>
+    <% else %>
       <p class="favorite">
         <%= link_to post_favorites_path(@post), method: :post do %>
-           ♡ <%= @post.favorites.count %> お気に入り
+          ♡ <%= @post.favorites.count %> お気に入り
         <% end %>
       </p>
     <% end %>
@@ -21,16 +20,14 @@
     <% if @user == current_user %>
       <%= link_to "編集", edit_post_path(@post.id), class:"btn btn-outline-danger " %>
     <% end %>
-
-   </div>
-
+  </div>
 
   <% if @post.post_images.attached? %>
     <div class="post_image">
     <% @post.post_images.each.with_index(1) do|image,i| %>
       <div>
-      <%= image_tag image, class:"show-img" %>
-      <p class="text-center"><%= i %>/<%= @post.post_images.count %></p>
+        <%= image_tag image, class:"show-img" %>
+        <p class="text-center"><%= i %>/<%= @post.post_images.count %></p>
       </div>
     <% end %>
     </div>
@@ -49,24 +46,21 @@
 
   <div>
     <%= form_with model:[@post, @comment] do |f| %>
-      <%= f.text_area :comment, rows: '4', cols: '40', placeholder: "コメントをここに"   %>
-
-        <% unless current_user.email == "guest@guest.mail" %>
-          <%= f.submit "コメントする", class:"form-control", class:"btn btn-outline-info  ml-2 mt-2 mb-5" %>
-        <% end %>
-
+      <%= f.text_area :comment, rows: '4', cols: '40', placeholder: "コメントをここに" %>
+      <% unless current_user.email == "guest@guest.mail" %>
+        <%= f.submit "コメントする", class:"form-control", class:"btn btn-outline-info  ml-2 mt-2 mb-5" %>
+      <% end %>
     <% end %>
   </div>
 
   <table class= "table mb-5" >
     コメント件数：<%= @comments.count %>
-
     <% @comments.each do |comment| %>
-    <tr>
-      <td><%= comment.user.username  %></td>
-      <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
-      <td><%= comment.comment %></td>
-    </tr>
+      <tr>
+        <td><%= comment.user.username  %></td>
+        <td><%= comment.created_at.strftime('%Y/%m/%d') %></td>
+        <td><%= comment.comment %></td>
+      </tr>
     <% end %>
   </table>
   <%= paginate @comments %>

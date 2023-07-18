@@ -5,17 +5,17 @@
 
   <% if @comments.length > 0 %>
     <table class="table mt-5">
-
     <% @comments.each do |comment| %>
       <tr>
         <%= link_to post_path(comment.post.id) do %>
           <td><%= comment.post.name %></td>
         <% end %>
-        <td><%= comment.comment %></td>
-        <td><%= link_to "コメントを削除する", comment_path(comment.id) ,method: :delete,  "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-5"  %></td>
+          <td><%= comment.comment %></td>
+          <td><%= link_to "コメントを削除する", comment_path(comment.id) ,method: :delete,  "data-confirm" => "本当に削除しますか？", class:"btn btn-danger mb-5"  %></td>
       </tr>
     <% end %>
     </table>
   <% else %>
     <p class="text text-center mt-5">コメントしたあそびはありません</p>
   <% end %>
+</div>

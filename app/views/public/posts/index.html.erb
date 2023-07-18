@@ -1,10 +1,7 @@
 <%= flash[:notice] %>
 
 <div class="container  ">
-
-
   <div class= "row">
-
     <div class= "squeeze col-md-2 col-md-offset-2 mt-5 mr-5 ">
       <%= form_tag(posts_path, method: :get ) do %>
         <%= text_field_tag :search   %>
@@ -20,31 +17,31 @@
           </div>
         <% end %>
       <% end %>
-    </ul>
-  </div>
+      </ul>
+    </div>
 
-  <div class="post col-md-6 offset-1  ">
-    <div class="row d-flex align-items-end ">
-      <h2 class="post_index_title">あそび</h2>
-      <p>(全<%= @post %>件)</p>
+    <div class="post col-md-6 offset-1  ">
+      <div class="row d-flex align-items-end ">
+        <h2 class="post_index_title">あそび</h2>
+        <p>(全<%= @post %>件)</p>
         <p class= "post_new ml-5"><%= link_to"あそびを投稿する", new_post_path, class:" btn btn-outline-danger " %></p>
-    </div>
-
-
-    <div class="balloon1">
-      <p>NEW PLAY!</p>
-    </div>
-
-    <% @posts.each do |post| %>
-      <div class="box1">
-        <%= link_to post_path(post.id) do %>
-          <p class="post_name"><%= post.name %></p>
-        <% end %>
-        <%= link_to user_path(id: post.user.id) do %>
-          <i class="fas fa-user mr-1"></i><%=post.user.username %>
-        <% end %>
       </div>
-    <% end %>
-    <%= paginate @posts %>
+
+      <div class="balloon1">
+        <p>NEW PLAY!</p>
+      </div>
+
+      <% @posts.each do |post| %>
+        <div class="box1">
+          <%= link_to post_path(post.id) do %>
+            <p class="post_name"><%= post.name %></p>
+          <% end %>
+          <%= link_to user_path(id: post.user.id) do %>
+            <i class="fas fa-user mr-1"></i><%=post.user.username %>
+          <% end %>
+        </div>
+      <% end %>
+      <%= paginate @posts %>
+    </div>
   </div>
 </div>
